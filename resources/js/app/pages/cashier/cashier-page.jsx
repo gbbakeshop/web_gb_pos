@@ -14,11 +14,11 @@ export default function CashierPage() {
         <div className='flex'>
             <div className='flex-1 basis-7/12 h-screen '>
                 <div className='flex flex-col h-full w-full '>
-                    <div className='flex-1 basis-4/6 border-2 border-black'>
+                    <div className='flex-1 basis-4/6 border-1'>
                         <CashierTableSection />
                         <CashierModalItemSection />
                     </div>
-                    <div className='flex-1 flex  basis-2/6 border-2 border-black'>
+                    <div className='flex-1 flex  basis-2/6 border-1'>
                         <div className='flex-1'>
                             keyboard
                         </div>
@@ -28,9 +28,9 @@ export default function CashierPage() {
                     </div>
                 </div>
             </div>
-            <div className='flex-1 flex flex-col basis-5/12 border-2 border-black'>
+            <div className='flex-1 flex flex-col basis-5/12 border-1'>
 
-                <div className='flex-1 flex flex-col basis-4/6 border-2 border-black'>
+                <div className='flex-1 flex flex-col basis-4/6 border-1'>
                     <div className='flex-1'>
                         <CashierScannerSection />
                     </div>
@@ -39,7 +39,7 @@ export default function CashierPage() {
 
                     </div>
                 </div>
-                <div className='flex-1 basis-2/6  border-2 border-black'>
+                <div className='flex-1 basis-2/6  border-1'>
                     <div className="grid grid-cols-3 gap-4 h-full">
                         <button
                             className="flex items-center justify-center">

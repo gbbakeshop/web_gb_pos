@@ -21,6 +21,5 @@ export async function get_all_account_service() {
 
   export async function get_account_service() {
     const response = await axios.get('/api/user')
-    console.log('ressss', response)
     return response.data;
   }

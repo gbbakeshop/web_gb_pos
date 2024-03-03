@@ -35,7 +35,7 @@ export default function CashierPayModalSection() {
     <>
       <div
         onClick={() => setOpen(true)}
-        className='w-full hover:bg-gray-800 bg-gray-900 p-4 rounded-lg text-lg font-black text-white flex items-center justify-center'>
+        className='w-full hover:bg-red-400 bg-red-500 p-4 rounded-lg text-lg font-black text-white flex items-center justify-center'>
         PAY
       </div>
       <Transition.Root show={open} as={Fragment}>
@@ -147,7 +147,7 @@ export default function CashierPayModalSection() {
                       className={`inline-flex w-full justify-center rounded-md ${isSubmit()?'bg-red-300':'bg-red-600 hover:bg-red-500'}  px-3 py-2 text-sm font-semibold text-white shadow-sm  sm:ml-3 sm:w-auto`}
                       onClick={acceptPayment}
                     >
-                      Confirm Payment{`${isSubmit()}`}
+                      Confirm Payment
                     </button>
                     <button
                       type="button"

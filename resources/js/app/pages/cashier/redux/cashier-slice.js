@@ -17,7 +17,8 @@ export const cashierSlice = createSlice({
       change: 0
     },
     loading: false,
-    isPrint:false
+    isPrint:false,
+    search:''
   },
   reducers: {
     incrementByAmount: (state, action) => {
@@ -30,7 +31,14 @@ export const cashierSlice = createSlice({
       ];
       state.payment = {
         ...state.payment,
-        total: state.cart.reduce((acc, obj) => acc + obj.price, 0).toFixed(2)
+        total: state.cart.reduce((acc, obj) => acc + obj.total, 0).toFixed(2)
+      }
+    },
+    changesCart: (state, action) => {
+      state.cart = action.payload
+      state.payment = {
+        ...state.payment,
+        total: state.cart.reduce((acc, obj) => acc + obj.total, 0).toFixed(2)
       }
     },
     setSelectedItem: (state, action) => {
@@ -62,6 +70,9 @@ export const cashierSlice = createSlice({
     setIsPrint: (state, action) => {
       state.isPrint = action.payload
     },
+    setSearch: (state, action) => {
+      state.search = action.payload
+    },
   },
 })
 export const {
@@ -71,7 +82,9 @@ export const {
   changeTenders,
   setLoading,
   resetPayment,
-  setIsPrint
+  setIsPrint,
+  setSearch,
+  changesCart
 } = cashierSlice.actions
 
 export default cashierSlice.reducer

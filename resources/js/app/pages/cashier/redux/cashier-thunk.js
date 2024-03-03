@@ -8,7 +8,14 @@ export function addCartThunk(product) {
         if ((await product).status == 'success') {
             const item = getState().cashier.cart
             const id = (await product).data.id
-            dispatch(cashierSlice.actions.setCart((await product).data));
+            const randomId = Math.floor(1000000000 + Math.random() * 9000000000);
+            dispatch(cashierSlice.actions.setCart({
+                ...(await product).data,
+                randomId:randomId,
+                quantity:1,
+                total:(await product).data.price
+            }));
+            dispatch(cashierSlice.actions.setSearch(''))
         }
     };
 }
