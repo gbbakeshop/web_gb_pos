@@ -13,14 +13,16 @@ export default function ProductsEditSection({ data }) {
     const { toastStatus } = useSelector((state) => state.app);
 
     useEffect(() => {
-        dispatch(setProductForm({
-            ...productForm,
-            id:data.id,
-            barcode: data.barcode,
-            description: data.description,
-            quantity: data.quantity,
-            price: data.price,
-        }))
+        if (open) {
+            dispatch(setProductForm({
+                ...productForm,
+                id:data.id,
+                barcode: data.barcode,
+                description: data.description,
+                quantity: data.quantity,
+                price: data.price,
+            }))
+        }
     }, [open]);
 
     useEffect(() => {
@@ -54,14 +56,14 @@ export default function ProductsEditSection({ data }) {
                         className=" flex flex-col w-full">
                         <div className='flex-none'>
                             <div className='text-2xl font-bold'>
-                                Create Products
+                                Update Products
                             </div>
                         </div>
                         <div className='flex-1'>
                             <div>
                                 <div className="mb-2">
                                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                                        Barcode{productForm.barcode ?? ""}
+                                        Barcode
                                     </label>
                                     <input
                                         required
@@ -126,7 +128,7 @@ export default function ProductsEditSection({ data }) {
                             </div>
                         </div>
                         <div className='flex items-center justify-center w-full flex-none'>
-                            <button className='bg-gray-900 hover:bg-gray-800 p-3 w-full rounded-md text-white font-bold'>Submit</button>
+                            <button className='bg-red-500 hover:bg-red-400 p-3 w-full rounded-md text-white font-bold'>Submit</button>
                         </div>
                     </form>
                 </div>

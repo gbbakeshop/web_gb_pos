@@ -31,7 +31,7 @@ export default function AdministratorShowSalesItemSection({ data, id }) {
                                 <li>
                                     Subtotal: {data.subtotal}
                                 </li>
-                                <li>
+                                {/* <li>
                                 Tax: {data.tax}
                                 </li>
                                 <li>
@@ -39,6 +39,9 @@ export default function AdministratorShowSalesItemSection({ data, id }) {
                                 </li>
                                 <li>
                                   Change: {data.change}
+                                </li> */}
+                                <li>
+                                  Total: {data.total}
                                 </li>
                             </ul>
                             <ul role="list" className="divide-y divide-gray-100">
@@ -49,7 +52,7 @@ export default function AdministratorShowSalesItemSection({ data, id }) {
                                         <div className="flex min-w-0 gap-x-4">
                                             <div className="min-w-0 flex-auto">
                                                 <p className="text-sm font-semibold leading-6 text-gray-900">{res.product.description}</p>
-                                                <p className="mt-1 truncate text-xs leading-5 text-gray-500">Barcode:{res.product.barcode}</p>
+                                                <p className="mt-1 truncate text-xs leading-5 text-gray-500">Barcode: {res.product.barcode}</p>
                                             </div>
                                         </div>
                                         <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">

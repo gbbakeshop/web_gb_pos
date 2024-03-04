@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import DrawerAction from '../../../../layouts/components/drawer-action'
 import { useDispatch, useSelector } from 'react-redux'
-import { setProductForm } from '../redux/products-slice'
+import { setProductForm, setProducts } from '../redux/products-slice'
 import store from '../../../../../store/store'
 import { createProductThunk } from '../redux/products-thunk'
 
@@ -21,6 +21,11 @@ export default function ProductsCreateSection() {
         e.preventDefault()
         store.dispatch(createProductThunk())
     }
+    useEffect(() => {
+        if(open){
+            dispatch(setProductForm({}));
+        }
+    }, [open]);
     return (
         <div>
 
@@ -52,7 +57,7 @@ export default function ProductsCreateSection() {
                             <div>
                                 <div className="mb-2">
                                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                                        Barcode{productForm.barcode ?? ""}
+                                        Barcode
                                     </label>
                                     <input
                                         required
@@ -111,13 +116,13 @@ export default function ProductsCreateSection() {
                                         }))}
                                         className=" appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         id="price"
-                                        type="number"
+                                        type="text"
                                         placeholder="Input Price" />
                                 </div>
                             </div>
                         </div>
                         <div className='flex items-center justify-center w-full flex-none'>
-                            <button className='bg-gray-900 hover:bg-gray-800 p-3 w-full rounded-md text-white font-bold'>Submit</button>
+                            <button className='bg-red-500 hover:bg-red-400 p-3 w-full rounded-md text-white font-bold'>Submit</button>
                         </div>
                     </form>
                 </div>

@@ -16,6 +16,8 @@ export function addCartThunk(product) {
                 total:(await product).data.price
             }));
             dispatch(cashierSlice.actions.setSearch(''))
+        }else{
+            dispatch(cashierSlice.actions.setSearch(''))
         }
     };
 }
