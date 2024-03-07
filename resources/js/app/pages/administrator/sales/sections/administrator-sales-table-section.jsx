@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import store from './../../../../../store/store'
 import { getSalesThunk } from '../redux/sales-thunk';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import AdministratorShowSalesItemSection from './administrator-show-sales-item-section';
+import moment from 'moment';
 export default function AdministratorSalesTableSection() {
     const [page, setPage] = useState(1)
     const { sales } = useSelector((state) => state.sales);
+    const [searching, setSearching] = useState('')
+   
+
     useEffect(() => {
-        store.dispatch(getSalesThunk(page))
+        store.dispatch(getSalesThunk(page, searching))
     }, [page]);
 
     function backPage() {
@@ -15,6 +19,11 @@ export default function AdministratorSalesTableSection() {
     }
     function nextPage() {
         setPage(page + 1)
+    }
+
+    function submitSearch(e) {
+        e.preventDefault()
+        store.dispatch(getSalesThunk(page, searching))
     }
     return (
         <div>
@@ -26,12 +35,12 @@ export default function AdministratorSalesTableSection() {
 
                             <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">240 vendors</span>
                         </div>
-                        <p className="mt-1 text-sm text-gray-500 dark:text-gray-300">
+                        {/* <p className="mt-1 text-sm text-gray-500 dark:text-gray-300">
                             Selected bread recipe you wanted to make.
-                        </p>
+                        </p> */}
                     </div>
 
-                    {/* <div className="flex items-center mt-4 gap-x-3">
+                    <div className="flex items-center mt-4 gap-x-3">
                         <button className="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto dark:hover:bg-gray-800 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clipPath="url(#clip0_3098_154395)">
@@ -54,11 +63,11 @@ export default function AdministratorSalesTableSection() {
 
                             <span>Add vendor</span>
                         </button>
-                    </div> */}
+                    </div>
                 </div>
 
                 <div className="mt-6 md:flex md:items-center md:justify-between">
-                    <div className="inline-flex overflow-hidden bg-white border divide-x rounded-lg dark:bg-gray-900 rtl:flex-row-reverse dark:border-gray-700 dark:divide-gray-700">
+                    {/* <div className="inline-flex overflow-hidden bg-white border divide-x rounded-lg dark:bg-gray-900 rtl:flex-row-reverse dark:border-gray-700 dark:divide-gray-700">
                         <button className="px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 bg-gray-100 sm:text-sm dark:bg-gray-800 dark:text-gray-300">
                             Daily
                         </button>
@@ -70,17 +79,24 @@ export default function AdministratorSalesTableSection() {
                         <button className="px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 sm:text-sm dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">
                             Monthly
                         </button>
-                    </div>
+                    </div> */}
 
-                    <div className="relative flex items-center mt-4 md:mt-0">
+                    <form
+                        onSubmit={submitSearch}
+                        className="relative flex items-center mt-4 md:mt-0">
                         <span className="absolute">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 mx-3 text-gray-400 dark:text-gray-600">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                             </svg>
                         </span>
 
-                        <input type="text" placeholder="Search" className="block w-full py-1.5 pr-5 text-gray-700 bg-white border border-gray-200 rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
-                    </div>
+                        <input type="text"
+                            onInput={(e) => setSearching(e.target.value)}
+                            placeholder="Search" className="block w-full py-1.5 pr-5 text-gray-700 bg-white border border-gray-200 rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+                        <button
+                            type='submit'
+                            className='p-2 bg-red-500 text-white hover:bg-red-400 mx-3 rounded-lg'>Search</button>
+                    </form>
                 </div>
 
                 <div className="flex flex-col mt-6">
@@ -122,6 +138,9 @@ export default function AdministratorSalesTableSection() {
                                                 Total
                                             </th>
                                             <th scope="col" className="px-2 py-2 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                                Sold At
+                                            </th>
+                                            <th scope="col" className="px-2 py-2 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                                 Action
                                             </th>
                                         </tr>
@@ -132,7 +151,7 @@ export default function AdministratorSalesTableSection() {
                                                 return <tr key={i}>
                                                     <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
                                                         <div>
-                                                            <h2 className="font-medium text-gray-800 dark:text-white ">GB-{res.id}</h2>
+                                                            <h2 className="font-medium text-gray-800 dark:text-white ">GB-{res.receipt_id}</h2>
                                                         </div>
                                                     </td>
                                                     <td className="px-2 py-2 text-sm font-medium whitespace-nowrap">
@@ -159,6 +178,9 @@ export default function AdministratorSalesTableSection() {
                                                     <td className="px-2 py-2 text-sm whitespace-nowrap">
 
                                                         <h2 className="font-medium text-gray-800 dark:text-white ">{res.total}</h2>
+                                                    </td>
+                                                    <td className="px-2 py-2 text-sm whitespace-nowrap">
+                                                        {moment(res.created_at).format('LLL')}
                                                     </td>
                                                     <td className="px-2 py-2 text-sm whitespace-nowrap">
                                                         <AdministratorShowSalesItemSection id={res.id} data={res} />

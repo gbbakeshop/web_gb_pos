@@ -11,9 +11,16 @@ class SalesController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = 10 ;
-        $sales = Sales::with('sales_item')->orderBy('created_at', 'desc')->paginate($perPage);
+        $perPage = 10;
+        $query = Sales::with('sales_item')->orderBy('created_at', 'desc');
 
+        // Add search functionality
+        if ($request->has('search')) {
+            $searchTerm = $request->input('search');
+            $query->where('receipt_id', 'like', "%$searchTerm%");
+        }
+
+        $sales = $query->paginate($perPage);
         $salesData = [];
 
         foreach ($sales as $sale) {
@@ -21,7 +28,7 @@ class SalesController extends Controller
             $items = [];
 
             foreach ($sale->sales_item as $item) {
-                $product = Product::find($item['product_id']); // Assuming product_id is the foreign key in sales_item table
+                $product = Product::find($item['product_id']);
 
                 if ($product) {
                     $items[] = [
@@ -42,15 +49,19 @@ class SalesController extends Controller
 
         return response()->json([
             'data' => $salesData,
-            $sales->nextPageUrl()
+            'next_page_url' => $sales->nextPageUrl()
         ], 200);
     }
+
 
     public function store(Request $request)
     {
         $sales = Sales::create($request->payment);
         foreach ($request->cart as $value) {
-            //add deduction item
+            // $product = Product::findOrFail($value['id']);
+            // $product->update([
+            //     'quantity' => $product->quantity - $value['quantity']
+            // ]);
             SalesItem::create([
                 'sales_id' => $sales->id,
                 'product_id' => $value['id'],

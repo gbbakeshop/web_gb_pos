@@ -1,12 +1,23 @@
 import axios from "axios"
-import { useState } from "react"
-import { login_account_service } from "../../../services/account-service"
+import { useEffect, useState } from "react"
+import { get_account_service, login_account_service } from "../../../services/account-service"
 import { useNavigate } from "react-router-dom"
 
 export default function LoginPage() {
   const [data, setData] = useState({})
   const [error, setError] = useState('')
   const navigate = useNavigate()
+
+  useEffect(() => {
+    get_account_service()
+      .then(res => {
+        if(res.role != 'admin'){
+          navigate('/cashier')
+        }else{
+          navigate('/administrator/dashboard')
+        }
+      })
+  }, []);
   async function loginSubmit(e) {
     e.preventDefault()
     try {

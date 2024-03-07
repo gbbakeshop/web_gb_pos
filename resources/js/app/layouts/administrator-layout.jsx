@@ -5,6 +5,7 @@ import ChatSection from './sections/chat-section';
 import Toastify from '../components/toastify';
 import LogoutSection from './sections/logout-section';
 import { get_account_service } from '../../services/account-service';
+import YearSelectSection from './sections/year-select-section';
 
 export default function AdministratorLayout() {
   const { pathname } = useLocation()
@@ -45,6 +46,7 @@ export default function AdministratorLayout() {
             </button>
             <button className="flex items-center justify-center h-10 px-4 ml-2 text-sm font-medium  rounded ">
               {/* Action 2 */}
+              <YearSelectSection />
             </button>
             <button className="relative ml-2 text-sm  group">
               <LogoutSection />

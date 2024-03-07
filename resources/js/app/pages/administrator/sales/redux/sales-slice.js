@@ -5,13 +5,11 @@ export const salesSlice = createSlice({
   name: 'sales',
   initialState: {
     sales: [],
-  
   },
   reducers: {
     setSales: (state, action) => {
       state.sales = action.payload
     },
-
   },
 })
 export const { 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AnalyticsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SalesController;
 use Illuminate\Http\Request;
@@ -25,3 +26,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('products', ProductController::class);
 Route::apiResource('sales', SalesController::class);
 Route::apiResource('accounts', AccountController::class);
+Route::apiResource('analytics', AnalyticsController::class);
