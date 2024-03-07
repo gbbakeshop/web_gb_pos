@@ -50,6 +50,7 @@ class SalesController extends Controller
     {
         $sales = Sales::create($request->payment);
         foreach ($request->cart as $value) {
+            //add deduction item
             SalesItem::create([
                 'sales_id' => $sales->id,
                 'product_id' => $value['id'],

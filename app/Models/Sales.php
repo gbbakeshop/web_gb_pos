@@ -11,6 +11,7 @@ class Sales extends Model
     use HasFactory;
     protected $fillable = [
         'cashier_id',
+        'receipt_id',
         'discount',
         'tax',
         'subtotal',

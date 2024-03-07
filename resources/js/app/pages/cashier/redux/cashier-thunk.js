@@ -45,8 +45,6 @@ export function createPaymentThunk() {
                 status: 'success',
                 message: 'Created Success!'
             }));
-            
-        
         } catch (error) {
             dispatch(cashierSlice.actions.setLoading(false));
             dispatch(appSlice.actions.setToastStatus({

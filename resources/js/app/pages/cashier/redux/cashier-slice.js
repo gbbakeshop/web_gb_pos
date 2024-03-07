@@ -5,9 +5,10 @@ export const cashierSlice = createSlice({
   name: 'cashier',
   initialState: {
     value: 0,
-    cart: [],
+    cart: JSON.parse(localStorage.getItem('cart')) ?? [],
     selectedItem: null,
     payment: {
+      receipt_id: undefined,
       cashier_id: 0,
       discount: 0,
       tax: 0,
@@ -17,8 +18,8 @@ export const cashierSlice = createSlice({
       change: 0
     },
     loading: false,
-    isPrint:false,
-    search:''
+    isPrint: false,
+    search: ''
   },
   reducers: {
     incrementByAmount: (state, action) => {
@@ -48,12 +49,14 @@ export const cashierSlice = createSlice({
       const payload = action.payload.replace(/[^0-9.]/g, '');
       state.payment = {
         ...state.payment,
+        receipt_id: state.payment.receipt_id ?? Math.floor(1000000000000 + Math.random() * 90000000000000),
         tenders: payload,
         change: (parseFloat(payload) - parseFloat(state.payment.total)).toFixed(2)
       }
     },
     resetPayment: (state) => {
       state.payment = {
+        receipt_id: undefined,
         cashier_id: 0,
         discount: 0,
         tax: 0,

@@ -96,11 +96,11 @@ export default function ProductsCreateSection() {
                                         value={productForm.quantity ?? ""}
                                         onChange={(e) => dispatch(setProductForm({
                                             ...productForm,
-                                            quantity: e.target.value
+                                            quantity: e.target.value.replace(/[^0-9.]/g, '')
                                         }))}
                                         className=" appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         id="quantity"
-                                        type="number"
+                                        type="text"
                                         placeholder="Input Quantity" />
                                 </div>
                                 <div className="mb-2">
@@ -112,7 +112,7 @@ export default function ProductsCreateSection() {
                                         value={productForm.price ?? ""}
                                         onChange={(e) => dispatch(setProductForm({
                                             ...productForm,
-                                            price: e.target.value
+                                            price: e.target.value.replace(/[^0-9.]/g, '')
                                         }))}
                                         className=" appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         id="price"

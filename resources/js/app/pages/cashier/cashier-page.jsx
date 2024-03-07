@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import CashierTableSection from './sections/cashier-table-section'
 import CashierSubTotalSection from './sections/cashier-sub-total-section'
 import CashierScannerSection from './sections/cashier-scanner-section'
@@ -6,9 +6,17 @@ import CashierModalItemSection from './sections/cashier-modal-item-section'
 import CashierPayModalSection from './sections/cashier-pay-modal-section'
 import CashierLogoutSection from './sections/cashier-logout-section'
 import CashierPrintDataComponent from './components/cashier-print-data-component'
+import { useDispatch, useSelector } from 'react-redux'
+import { changesCart } from './redux/cashier-slice'
 
 export default function CashierPage() {
-
+    const dispatch = useDispatch()
+    const { cart } = useSelector((state) => state.cashier);
+    
+    useEffect(() => {
+            localStorage.setItem('cart', JSON.stringify(cart))
+            dispatch(changesCart(JSON.parse(localStorage.getItem('cart'))))  
+    }, [JSON.stringify(cart)]);
 
     return (
         <div className='flex'>

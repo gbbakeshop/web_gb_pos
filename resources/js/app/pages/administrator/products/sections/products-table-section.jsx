@@ -20,7 +20,7 @@ export default function ProductsTableSection() {
           <div className="flex items-center gap-x-3">
             <h2 className="text-lg font-medium text-gray-800 dark:text-white">List of Products</h2>
 
-            <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">240 vendors</span>
+            <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">{products.length} products</span>
           </div>
           {/* <p className="mt-1 text-sm text-gray-500 dark:text-gray-300">
             Selected bread recipe you wanted to make.
@@ -54,12 +54,12 @@ export default function ProductsTableSection() {
           </button>
 
           <button className="px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 sm:text-sm dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">
-            Monitored
+           Bad Order
           </button>
 
-          <button className="px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 sm:text-sm dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">
+          {/* <button className="px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 sm:text-sm dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">
             Unmonitored
-          </button>
+          </button> */}
         </div>
 
         <div className="relative flex items-center mt-4 md:mt-0">
