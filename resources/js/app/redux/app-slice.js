@@ -13,7 +13,8 @@ export const appSlice = createSlice({
     toastStatus:{
       status:'waiting',
       message:''
-    }
+    },
+    user:{}
   },
   reducers: {
     incrementByAmount: (state, action) => {
@@ -34,6 +35,9 @@ export const appSlice = createSlice({
     setToastStatus: (state, action) => {
       state.toastStatus = action.payload
     },
+    setUser: (state, action) => {
+      state.user = action.payload
+    },
   },
 })
 export const { 
@@ -42,6 +46,8 @@ export const {
   setBranches,
   setBreads,
   setToastStatus,
-  setRecipes } = appSlice.actions
+  setRecipes,
+  setUser,
+ } = appSlice.actions
 
 export default appSlice.reducer

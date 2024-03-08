@@ -1,11 +1,13 @@
 
 import React, { useEffect, useRef } from 'react';
+import Barcode from 'react-barcode';
 import { useSelector } from 'react-redux';
 import ReactToPrint from 'react-to-print';
 
 export default function CashierPrintDataComponent() {
     const componentRef = useRef();
     const { selectedItem, isPrint } = useSelector((state) => state.cashier);
+    const { user } = useSelector((state) => state.app);
     const { cart, payment } = useSelector((state) => state.cashier);
 
     useEffect(() => {
@@ -24,23 +26,23 @@ export default function CashierPrintDataComponent() {
 
                 <div className="flex w-full items-center justify-center mb-52">
                     <div className="w-80 ">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="chippz" className="mx-auto w-16 py-4" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="chippz" className="mx-auto w-16 py-4 font-semibold text-black" />
                         <div className="flex flex-col justify-center items-center gap-2">
                             <h4 className="font-semibold">GBS Minimart</h4>
-                            <p className="text-xs text-center">Corner of V. Gustilo Street and S. Carmnona Street.</p>
+                            <p className="text-xs text-center font-semibold">Corner of V. Gustilo Street and S. Carmnona Street.</p>
                         </div>
                         <div className="flex flex-col gap-3 border-b py-6 text-xs">
                             <p className="flex justify-between">
-                                <span className="text-black">Receipt No.:</span>
-                                <span>#{payment.receipt_id}</span>
+                                <span className="text-black font-semibold">Receipt No.:</span>
+                                <span className='font-semibold'>#{payment.receipt_id}</span>
                             </p>
                             {/* <p className="flex justify-between">
                                 <span className="text-black">Order Type:</span>
                                 <span>Dine-in</span>
                             </p> */}
                             <p className="flex justify-between">
-                                <span className="text-black">Cashier:</span>
-                                <span>GBS Staff</span>
+                                <span className="text-black font-semibold">Cashier:</span>
+                                <span className='font-semibold'>{user.name}</span>
                             </p>
                         </div>
                         <div className="flex flex-col gap-3 pb-6 pt-2 text-xs">
@@ -56,9 +58,9 @@ export default function CashierPrintDataComponent() {
                                     {
                                         cart.map((res, index) => {
                                             return <tr key={index} className="flex">
-                                                <td className="text-xs flex-1 py-1">{res.description}</td>
-                                                <td className="text-xs min-w-[44px]">{res.quantity}</td>
-                                                <td className="text-xs min-w-[44px]">{res.total}</td>
+                                                <td className="font-semibold text-xs flex-1 py-1">{res.description}</td>
+                                                <td className="font-semibold text-xs min-w-[44px]">{res.quantity}</td>
+                                                <td className="font-semibold text-xs min-w-[44px]">{res.total.toFixed(2)}</td>
                                             </tr>
 
                                         })
@@ -66,19 +68,19 @@ export default function CashierPrintDataComponent() {
 
                                 </tbody>
                             </table>
-                            <div className="py-4 justify-center items-center flex flex-col gap-2 mb-50">
-                                --------------------------------------------------
+                            <div className=" justify-center items-center flex flex-col gap-2">
+                                ---------------------------------------------------------
                             </div>
 
                             <p className="flex justify-between">
-                                <span className="text-black">Total:</span>
-                                <span>{payment.total}</span>
+                                <span className="text-black font-semibold">Total:</span>
+                                <span className='font-semibold'>{payment.total}</span>
                             </p>
                             <p className="flex justify-between">
-                                <span className="text-black">Item Purchased:</span>
-                                <span>{cart.reduce((acc, obj) => acc + obj.quantity, 0)}</span>
+                                <span className="text-black font-semibold">Item Purchased:</span>
+                                <span className='font-semibold'>{cart.reduce((acc, obj) => acc + obj.quantity, 0)}</span>
                             </p>
-                            <div className="py-4 justify-center items-center flex flex-col gap-2 mb-50">
+                            <div className="font-semibold py-4 justify-center items-center flex flex-col gap-2 mb-50">
                                 <p className="flex gap-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21.3 12.23h-3.48c-.98 0-1.85.54-2.29 1.42l-.84 1.66c-.2.4-.6.65-1.04.65h-3.28c-.31 0-.75-.07-1.04-.65l-.84-1.65a2.567 2.567 0 0 0-2.29-1.42H2.7c-.39 0-.7.31-.7.7v3.26C2 19.83 4.18 22 7.82 22h8.38c3.43 0 5.54-1.88 5.8-5.22v-3.85c0-.38-.31-.7-.7-.7ZM12.75 2c0-.41-.34-.75-.75-.75s-.75.34-.75.75v2h1.5V2Z" fill="#000"></path><path d="M22 9.81v1.04a2.06 2.06 0 0 0-.7-.12h-3.48c-1.55 0-2.94.86-3.63 2.24l-.75 1.48h-2.86l-.75-1.47a4.026 4.026 0 0 0-3.63-2.25H2.7c-.24 0-.48.04-.7.12V9.81C2 6.17 4.17 4 7.81 4h3.44v3.19l-.72-.72a.754.754 0 0 0-1.06 0c-.29.29-.29.77 0 1.06l2 2c.01.01.02.01.02.02a.753.753 0 0 0 .51.2c.1 0 .19-.02.28-.06.09-.03.18-.09.25-.16l2-2c.29-.29.29-.77 0-1.06a.754.754 0 0 0-1.06 0l-.72.72V4h3.44C19.83 4 22 6.17 22 9.81Z" fill="#000"></path></svg>
                                     gbs.minimart2024@gmail.com</p>
@@ -86,14 +88,16 @@ export default function CashierPrintDataComponent() {
                                     09......
                                 </p>
                             </div>
-                            <div className="py-4 justify-center items-center flex flex-col gap-2 mb-50">
+                            <div className="justify-center items-center flex flex-col gap-2 ">
                                 -------------------------
                             </div>
-
-                            <div className="py-4 justify-center items-center flex flex-col gap-2 mb-50">
+                            <div className='flex items-center justify-center'>
+                            <Barcode value={String(payment.receipt_id)??'0'} />
+                            </div>
+                            <div className="justify-center items-center flex flex-col gap-2 ">
                                 -------------------------
                             </div>
-                            <div className="py-4 text-black justify-center items-center flex flex-col gap-2 mb-50">
+                            <div className="py-4 font-semibold text-black justify-center items-center flex flex-col gap-2 mb-50">
                                 Only Defective or damage items will be accepted for return or exchange and subject
                                 to DTI rules on return/exchange. Bring this Receipt to return or exchange within 7days from purchase date.
                             </div>

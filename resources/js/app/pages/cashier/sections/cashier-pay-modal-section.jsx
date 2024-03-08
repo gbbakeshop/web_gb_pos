@@ -9,6 +9,7 @@ import { createPaymentThunk } from '../redux/cashier-thunk';
 export default function CashierPayModalSection() {
   const [open, setOpen] = useState(false)
   const { payment } = useSelector((state) => state.cashier);
+  const { user } = useSelector((state) => state.app);
   const cancelButtonRef = useRef(null)
   const dispatch = useDispatch()
   const [autoFocus, setAutoFucos] = useState(true)
@@ -149,7 +150,10 @@ export default function CashierPayModalSection() {
                                     <input
                                       autoFocus={autoFocus}
                                       value={payment.tenders == 0 ? '' : payment.tenders}
-                                      onChange={(e) => dispatch(changeTenders(e.target.value))}
+                                      onChange={(e) => dispatch(changeTenders({
+                                        value:e.target.value,
+                                        cashier_id:user.id
+                                      }))}
                                       type="text"
                                       id="paymentDetails"
                                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />

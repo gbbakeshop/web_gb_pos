@@ -46,9 +46,10 @@ export const cashierSlice = createSlice({
       state.selectedItem = action.payload
     },
     changeTenders: (state, action) => {
-      const payload = action.payload.replace(/[^0-9.]/g, '');
+      const payload = action.payload.value.replace(/[^0-9.]/g, '');
       state.payment = {
         ...state.payment,
+        cashier_id:action.payload.cashier_id,
         receipt_id: state.payment.receipt_id ?? Math.floor(1000000000000 + Math.random() * 90000000000000),
         tenders: payload,
         change: (parseFloat(payload) - parseFloat(state.payment.total)).toFixed(2)

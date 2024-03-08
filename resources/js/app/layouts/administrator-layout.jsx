@@ -6,10 +6,13 @@ import Toastify from '../components/toastify';
 import LogoutSection from './sections/logout-section';
 import { get_account_service } from '../../services/account-service';
 import YearSelectSection from './sections/year-select-section';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../redux/app-slice';
 
 export default function AdministratorLayout() {
   const { pathname } = useLocation()
   const path = pathname.split('/')[2]
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   useEffect(() => {
     get_account_service()
@@ -17,6 +20,7 @@ export default function AdministratorLayout() {
         if(res.role != 'admin'){
           navigate('/cashier')
         }
+        dispatch(setUser(res))
       })
   }, []);
 
