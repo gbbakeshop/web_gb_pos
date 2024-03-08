@@ -34,7 +34,13 @@ export default function FunctionKeysSection() {
           DELETE
         </div>
       </button>
-      <div className="...">02</div>
+      <button
+        className="flex flex-col items-center justify-center bg-red-500">
+        <h1 className="text-white text-5xl leading-tight font-black">E</h1>
+        <div className='text-white'>
+          CHANGE PRICE
+        </div>
+      </button>
       <CashierLogoutSection />
     </div>
   )

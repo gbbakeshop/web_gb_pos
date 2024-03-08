@@ -97,7 +97,7 @@ export default function DashboardLineCartSection({ analytics, periodic, year }) 
         datasets: [
             {
                 data: totals,
-                borderColor: 'rgb(255, 255, 255,1.0)',
+                borderColor: 'red',
                 fill: true,
                 backgroundColor: 'rgba(255, 255, 255, 0.1)',
                 borderWidth: 0.7,

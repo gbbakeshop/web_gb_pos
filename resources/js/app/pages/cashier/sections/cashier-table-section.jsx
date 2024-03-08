@@ -43,6 +43,8 @@ export default function CashierTableSection() {
         const handleKeyPress = (event) => {
             if ((event.key === 'D' || event.key === 'd')) {
                 deleteCartById(parseInt(id))
+            } else if ((event.key === 'E' || event.key === 'e')) {
+                deleteCartById(parseInt(id))
             }
         };
 
@@ -53,6 +55,8 @@ export default function CashierTableSection() {
             window.removeEventListener("keydown", handleKeyPress);
         };
     }, [id]);
+
+
 
     return (
         <section className="container mx-auto">
@@ -98,7 +102,7 @@ export default function CashierTableSection() {
                                                 <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
                                                     <div>
                                                         <h2 className="font-medium text-gray-800 ">
-                                                            {res.randomId}
+                                                            {res.id}
                                                         </h2>
                                                     </div>
                                                 </td>
