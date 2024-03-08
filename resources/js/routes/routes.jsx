@@ -11,6 +11,8 @@ import CashierPage from "../app/pages/cashier/cashier-page";
 import SalesPage from "../app/pages/administrator/sales/sales-page";
 import ProductsPage from "../app/pages/administrator/products/products-page";
 import AccountsPage from "../app/pages/administrator/accounts/accounts-page";
+import LoyaltyCardPage from "../app/pages/administrator/loyalty_card/loyalty-card-page";
+import BarcodePage from "../app/pages/administrator/barcode/barcode-page";
 export const router = createBrowserRouter([
   {
     path: '*',
@@ -35,6 +37,14 @@ export const router = createBrowserRouter([
       {
         path: 'products',
         element: <ProductsPage />,
+      },
+      {
+        path: 'loyalty-card',
+        element: <LoyaltyCardPage />,
+      },
+      {
+        path: 'Barcode',
+        element: <BarcodePage />,
       },
       {
         path: 'accounts',

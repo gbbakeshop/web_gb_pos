@@ -6,8 +6,12 @@ import {
     BuildingStorefrontIcon,
     ChatBubbleLeftRightIcon,
     CircleStackIcon,
+    CodeBracketIcon,
     Cog6ToothIcon,
     HomeIcon,
+    IdentificationIcon,
+    QueueListIcon,
+    UserCircleIcon,
     WrenchIcon,
 } from "@heroicons/react/24/outline";
 import { Disclosure } from '@headlessui/react';
@@ -38,6 +42,18 @@ export default function SideBarSection() {
             path: 'products',
             icon: <ClipboardDocumentCheckIcon className='h-6' />,
             to: '/administrator/products'
+        },
+        {
+            name: 'Barcode',
+            path: 'barcode',
+            icon: <QueueListIcon className='h-6 rotate-90' />,
+            to: '/administrator/barcode'
+        },
+        {
+            name: 'Loyalty Card',
+            path: 'loyalty-card',
+            icon: <IdentificationIcon className='h-6' />,
+            to: '/administrator/loyalty-card'
         },
         {
             name: 'Accounts',
