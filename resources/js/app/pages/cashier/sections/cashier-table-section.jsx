@@ -1,18 +1,59 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { changesCart } from '../redux/cashier-slice';
 import CashierEditModal from './cashier-edit-modal';
 
 export default function CashierTableSection() {
-
+    const myElementRefs = useRef([]);
     const { cart } = useSelector((state) => state.cashier);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const [selectedRow, setSelectedRow] = useState(0);
+    const [id, setId] = useState(0)
 
     function deleteCartById(randomId) {
-       const newCart = cart.filter(obj => obj.randomId !== randomId);
-        dispatch(changesCart(newCart))
+        if (window.confirm('Are you sure want to delete?')) {
+            const newCart = cart.filter(obj => obj.randomId !== randomId);
+            dispatch(changesCart(newCart));
+        }
     }
+
+    useEffect(() => {
+        const myElement = myElementRefs.current[selectedRow];
+        const handleKeyPress = (event) => {
+            if (event.key === 'ArrowUp' && selectedRow > 0) {
+                setId(myElement?.id)
+                setSelectedRow((prevRow) => prevRow - 1);
+            } else if (event.key === 'ArrowDown' && selectedRow < cart.length - 1) {
+                setId(myElement?.id)
+                setSelectedRow((prevRow) => prevRow + 1);
+            }
+        };
+        if (myElement?.id) {
+            setId(myElement?.id)
+        }
+        window.addEventListener('keydown', handleKeyPress);
+        // Cleanup the event listener on component unmount
+        return () => {
+            window.removeEventListener('keydown', handleKeyPress);
+        };
+    }, [selectedRow, cart]);
+
+    useEffect(() => {
+        const handleKeyPress = (event) => {
+            if ((event.key === 'D' || event.key === 'd')) {
+                deleteCartById(parseInt(id))
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyPress);
+
+        // Cleanup the event listener on component unmount
+        return () => {
+            window.removeEventListener("keydown", handleKeyPress);
+        };
+    }, [id]);
+
     return (
         <section className="container mx-auto">
             <div className="flex flex-col ">
@@ -48,11 +89,16 @@ export default function CashierTableSection() {
 
                                     {
                                         cart.map((res, i) => {
-                                            return <tr key={i}>
+                                            return <tr
+                                                id={res.randomId}
+                                                ref={(el) => (myElementRefs.current[i] = el)}
+                                                className={`${selectedRow === i ? 'bg-gray-300' : ''}`}
+                                                key={i}
+                                            >
                                                 <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
                                                     <div>
                                                         <h2 className="font-medium text-gray-800 ">
-                                                            {res.barcode}
+                                                            {res.randomId}
                                                         </h2>
                                                     </div>
                                                 </td>
@@ -83,11 +129,11 @@ export default function CashierTableSection() {
                                                 </td>
                                                 <td className="px-4 py-4 text-sm whitespace-nowrap">
                                                     <div className='flex gap-4'>
-                                                        <CashierEditModal data={res}/>
+                                                        <CashierEditModal data={res} />
                                                         <button
-                                                        onClick={()=>deleteCartById(res.randomId)}
-                                                        className="font-medium text-gray-800 ">
-                                                         <TrashIcon className='h-6 text-red-500'/>
+                                                            onClick={() => deleteCartById(res.randomId)}
+                                                            className="font-medium text-gray-800 ">
+                                                            <TrashIcon className='h-6 text-red-500' />
                                                         </button>
                                                     </div>
                                                 </td>

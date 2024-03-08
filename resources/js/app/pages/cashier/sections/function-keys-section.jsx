@@ -7,26 +7,33 @@ export default function FunctionKeysSection() {
     <div className="grid grid-cols-3 gap-4 h-full p-4 border-t">
       <button
         className="flex flex-col items-center justify-center bg-red-500">
-        <h1 class="text-white text-5xl leading-tight font-black">P</h1>
+        <h1 className="text-white text-5xl leading-tight font-black">P</h1>
         <div className='text-white'>
           PAY
         </div>
       </button>
+   
       <button
         className="flex flex-col items-center justify-center bg-red-500">
-        <h1 class="text-white text-5xl leading-tight font-black">F</h1>
+        <h1 className="text-white text-5xl leading-tight font-black">F</h1>
         <div className='text-white'>
           FUCOS
         </div>
       </button>
       <button
         className="flex flex-col items-center justify-center bg-red-500">
-        <h1 class="text-white text-5xl leading-tight font-black">C</h1>
+        <h1 className="text-white text-5xl leading-tight font-black">C</h1>
         <div className='text-white'>
           CANCEL
         </div>
       </button>
-      <div className="...">01</div>
+      <button
+        className="flex flex-col items-center justify-center bg-red-500">
+        <h1 className="text-white text-5xl leading-tight font-black">D</h1>
+        <div className='text-white'>
+          DELETE
+        </div>
+      </button>
       <div className="...">02</div>
       <CashierLogoutSection />
     </div>

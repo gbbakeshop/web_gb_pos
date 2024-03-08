@@ -10,6 +10,7 @@ export default function FormFieldInput({
     value,
 }) {
     useEffect(() => {
+
         const handleKeyPress = (event) => {
             if ((event.key === 'F' || event.key === 'f') && autofocus) {
                 // If 'F' key is pressed and autofocus prop is true
@@ -24,6 +25,21 @@ export default function FormFieldInput({
             window.removeEventListener("keydown", handleKeyPress);
         };
     }, [autofocus, name]);
+
+    useEffect(() => {
+        const handleKeyPress = (event) => {
+            if (event.key === 'ArrowUp') {
+                document.getElementById(name).blur();
+            } else if (event.key === 'ArrowDown') {
+                document.getElementById(name).blur();
+            }
+        };
+        window.addEventListener('keydown', handleKeyPress);
+        // Cleanup the event listener on component unmount
+        return () => {
+            window.removeEventListener('keydown', handleKeyPress);
+        };
+    }, []);
 
     return (
         <div>
