@@ -8,14 +8,15 @@ import CashierLogoutSection from './sections/cashier-logout-section'
 import CashierPrintDataComponent from './components/cashier-print-data-component'
 import { useDispatch, useSelector } from 'react-redux'
 import { changesCart } from './redux/cashier-slice'
+import FunctionKeysSection from './sections/function-keys-section'
 
 export default function CashierPage() {
     const dispatch = useDispatch()
     const { cart } = useSelector((state) => state.cashier);
-    
+
     useEffect(() => {
-            localStorage.setItem('cart', JSON.stringify(cart))
-            dispatch(changesCart(JSON.parse(localStorage.getItem('cart'))))  
+        localStorage.setItem('cart', JSON.stringify(cart))
+        dispatch(changesCart(JSON.parse(localStorage.getItem('cart'))))
     }, [JSON.stringify(cart)]);
 
     return (
@@ -27,8 +28,8 @@ export default function CashierPage() {
                         <CashierModalItemSection />
                     </div>
                     <div className='flex-1 flex  basis-2/6 border-1'>
-                        <div className='flex-1'>
-                            keyboard
+                        <div className='flex-1 flex items-center justify-center font-black bg-red-500 text-white text-center text-9xl'>
+                           GBS
                         </div>
                         <div className='flex-1 '>
                             <CashierSubTotalSection />
@@ -37,28 +38,16 @@ export default function CashierPage() {
                 </div>
             </div>
             <div className='flex-1 flex flex-col basis-5/12 border-1'>
-
                 <div className='flex-1 flex flex-col basis-4/6 border-1'>
                     <div className='flex-1'>
                         <CashierScannerSection />
                     </div>
                     <div className='flex-none  m-4'>
                         <CashierPayModalSection />
-
                     </div>
                 </div>
                 <div className='flex-1 basis-2/6  border-1'>
-                    <div className="grid grid-cols-3 gap-4 h-full">
-                        <button
-                            className="flex items-center justify-center">
-                            <img className='w-24' src="/images/search.jpg" />
-                        </button>
-                        <div className="...">02</div>
-                        <div className="...">03</div>
-                        <div className="...">01</div>
-                        <div className="...">02</div>
-                        <CashierLogoutSection />
-                    </div>
+                    <FunctionKeysSection />
                 </div>
             </div>
             <div className='hidden'>

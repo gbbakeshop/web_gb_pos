@@ -11,15 +11,44 @@ export default function CashierPayModalSection() {
   const { payment } = useSelector((state) => state.cashier);
   const cancelButtonRef = useRef(null)
   const dispatch = useDispatch()
+  const [autoFocus, setAutoFucos] = useState(true)
 
   async function acceptPayment(e) {
     e.preventDefault()
     if (!isSubmit()) {
       await store.dispatch(createPaymentThunk())
-      
+
       setOpen(false)
     }
   }
+
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if ((event.key === 'F' || event.key === 'f') && autoFocus) {
+        // If 'F' key is pressed and autofocus prop is true
+        setAutoFucos(true)
+        document.getElementById('paymentDetails').focus();
+      } else if ((event.key === 'C' || event.key === 'c')) {
+        // If 'F' key is pressed and autofocus prop is true
+        setOpen(false)
+        document.getElementById('paymentDetails').focus();
+      }else if ((event.key === 'P' || event.key === 'p')) {
+        // If 'F' key is pressed and autofocus prop is true
+        setOpen(true)
+        setTimeout(() => {
+          setAutoFucos(true)
+          document.getElementById('paymentDetails').focus();
+        }, 500);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [autoFocus]);
 
   function isSubmit() {
     if (payment.tenders < 0) {
@@ -28,6 +57,8 @@ export default function CashierPayModalSection() {
       return true;
     } else if (payment.change < 0) {
       return true;
+    } else if (payment.total == 0) {
+      return true;
     }
     return false
   }
@@ -35,7 +66,7 @@ export default function CashierPayModalSection() {
     <>
       <div
         onClick={() => setOpen(true)}
-        className='w-full hover:bg-red-400 bg-red-500 p-4 rounded-lg text-lg font-black text-white flex items-center justify-center'>
+        className='w-full hover:bg-red-400 bg-red-500 p-4 text-lg font-black text-white flex items-center justify-center'>
         PAY
       </div>
       <Transition.Root show={open} as={Fragment}>
@@ -116,11 +147,11 @@ export default function CashierPayModalSection() {
                                   </th>
                                   <td className="px-6 py-2 font-bold text-gray-900">
                                     <input
-                                      autoFocus={true}
-                                      value={payment.tenders}
+                                      autoFocus={autoFocus}
+                                      value={payment.tenders == 0 ? '' : payment.tenders}
                                       onChange={(e) => dispatch(changeTenders(e.target.value))}
                                       type="text"
-                                      id="default-input"
+                                      id="paymentDetails"
                                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
                                   </td>
                                 </tr>
@@ -144,7 +175,7 @@ export default function CashierPayModalSection() {
                     <button
                       disabled={isSubmit()}
                       type="submit"
-                      className={`inline-flex w-full justify-center rounded-md ${isSubmit()?'bg-red-300':'bg-red-600 hover:bg-red-500'}  px-3 py-2 text-sm font-semibold text-white shadow-sm  sm:ml-3 sm:w-auto`}
+                      className={`inline-flex w-full justify-center rounded-md ${isSubmit() ? 'bg-red-300' : 'bg-red-600 hover:bg-red-500'}  px-3 py-2 text-sm font-semibold text-white shadow-sm  sm:ml-3 sm:w-auto`}
                       onClick={acceptPayment}
                     >
                       Confirm Payment

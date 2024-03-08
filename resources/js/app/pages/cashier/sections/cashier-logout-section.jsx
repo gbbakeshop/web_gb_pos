@@ -1,10 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { logout_account_service } from '../../../../services/account-service'
 
 export default function CashierLogoutSection() {
 
     const navigate = useNavigate()
+
+    useEffect(() => {
+        const handleKeyPress = (event) => {
+            const isEscapeKey = event.key.toLowerCase() === 'escape';
+            if (isEscapeKey) {
+                logoutAccount();
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyPress);
+
+        // Cleanup the event listener on component unmount
+        return () => {
+            window.removeEventListener("keydown", handleKeyPress);
+        };
+    }, []);
+
 
     async function logoutAccount() {
         try {
@@ -17,9 +34,11 @@ export default function CashierLogoutSection() {
     }
     return (
         <button
-            onClick={logoutAccount}
-            className="flex items-center justify-center">
-            <img className='w-24' src="/images/logout.jpg" />
+            className="flex flex-col items-center justify-center bg-red-500">
+            <h1 class="text-white text-5xl leading-tight font-black">ESC</h1>
+            <div className='text-white'>
+                LOGOUT
+            </div>
         </button>
     )
 }

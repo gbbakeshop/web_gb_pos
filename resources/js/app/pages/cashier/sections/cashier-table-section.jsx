@@ -18,7 +18,7 @@ export default function CashierTableSection() {
             <div className="flex flex-col ">
                 <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className=" inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                        <div className="overflow-auto h-[67vh] border border-gray-200  ">
+                        <div className="overflow-auto h-[66.8vh] border border-gray-200  ">
                             <table className="min-w-full relative divide-y divide-gray-200 ">
                                 <thead className="bg-red-500 sticky top-0 text-white ">
                                     <tr>
