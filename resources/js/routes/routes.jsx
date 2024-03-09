@@ -13,6 +13,7 @@ import ProductsPage from "../app/pages/administrator/products/products-page";
 import AccountsPage from "../app/pages/administrator/accounts/accounts-page";
 import LoyaltyCardPage from "../app/pages/administrator/loyalty_card/loyalty-card-page";
 import BarcodePage from "../app/pages/administrator/barcode/barcode-page";
+import AccountDetailsPage from "../app/pages/administrator/accounts/details/account-details-page";
 export const router = createBrowserRouter([
   {
     path: '*',
@@ -51,7 +52,11 @@ export const router = createBrowserRouter([
         path: 'accounts',
         element: <AccountsPage />,
       },
-     
+      {
+        path: 'accounts/:id',
+        element: <AccountDetailsPage />,
+      },
+      
     ]
   },
   {

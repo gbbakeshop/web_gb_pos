@@ -74,4 +74,6 @@ class SalesController extends Controller
             'status' => 'success',
         ], 200);
     }
+
+    
 }

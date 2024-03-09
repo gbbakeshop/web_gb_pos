@@ -3,6 +3,7 @@ import store from './../../../../../store/store'
 import { getAllBranches } from '../redux/account-thunk';
 import { useSelector } from 'react-redux';
 import AdministratorCreateAccountSection from './administrator-create-account-section';
+import { Link } from 'react-router-dom';
 export default function AdministratorAccountTableSection() {
 
     const { accounts } = useSelector((state) => state.accounts);
@@ -115,7 +116,7 @@ export default function AdministratorAccountTableSection() {
                                                 return <tr key={i}>
                                                     <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
                                                         <div>
-                                                            <h2 className="font-medium text-gray-800 dark:text-white ">{res.name}</h2>
+                                                            <Link to={"/administrator/accounts/"+res.id} className="font-medium text-gray-800 dark:text-white ">{res.name}</Link>
                                                         </div>
                                                     </td>
                                                     <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AccountDetailsController;
 use App\Http\Controllers\AnalyticsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SalesController;
@@ -27,3 +28,5 @@ Route::apiResource('products', ProductController::class);
 Route::apiResource('sales', SalesController::class);
 Route::apiResource('accounts', AccountController::class);
 Route::apiResource('analytics', AnalyticsController::class);
+Route::apiResource('account_details', AccountDetailsController::class);
+

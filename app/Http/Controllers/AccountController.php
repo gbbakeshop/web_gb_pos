@@ -10,7 +10,7 @@ class AccountController extends Controller
 {
     public function index()
     {
-        $accounts = User::get();
+        $accounts = User::where('role','<>','admin')->get();
 
         return response()->json([
             'status' => 'status',
