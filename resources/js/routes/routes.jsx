@@ -23,6 +23,10 @@ export const router = createBrowserRouter([
     element: <LoginPage />,
   },
   {
+    path: 'Barcode',
+    element: <BarcodePage />,
+  },
+  {
     path: '/administrator',
     element: <AdministratorLayout />,
     children: [
@@ -42,10 +46,7 @@ export const router = createBrowserRouter([
         path: 'loyalty-card',
         element: <LoyaltyCardPage />,
       },
-      {
-        path: 'Barcode',
-        element: <BarcodePage />,
-      },
+     
       {
         path: 'accounts',
         element: <AccountsPage />,

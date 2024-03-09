@@ -113,9 +113,9 @@ export default function ProductsTableSection() {
                       return (
                         <tr key={i}>
                           <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
-                            <div>
-                              <h2 className="font-medium text-gray-800 dark:text-white ">{res.barcode}</h2>
-                            </div>
+                            <a href={'/barcode?value='+res.barcode} target='_blank'>
+                              <h2 className="font-medium text-gray-800 dark:text-white underline">{res.barcode}</h2>
+                            </a>
                           </td>
                           <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
                           <h2 className="font-medium text-gray-800 dark:text-white ">{res.description}</h2>

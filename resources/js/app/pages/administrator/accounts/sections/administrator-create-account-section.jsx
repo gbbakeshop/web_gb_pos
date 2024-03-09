@@ -133,7 +133,7 @@ export default function AdministratorCreateAccountSection() {
                             </div>
                         </div>
                         <div className='flex items-center justify-center w-full flex-none'>
-                            <button className='bg-gray-900 hover:bg-gray-800 p-3 w-full rounded-md text-white font-bold'>Submit</button>
+                            <button className='bg-red-500 hover:bg-red-600 p-3 w-full rounded-md text-white font-bold'>Submit</button>
                         </div>
                     </form>
                 </div>

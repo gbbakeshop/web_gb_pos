@@ -69,7 +69,7 @@ export default function CashierPrintDataComponent() {
                                 </tbody>
                             </table>
                             <div className=" justify-center items-center flex flex-col gap-2">
-                                ---------------------------------------------------------
+                                --------------------------------------------------------
                             </div>
 
                             <p className="flex justify-between">

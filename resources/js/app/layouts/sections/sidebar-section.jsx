@@ -43,12 +43,12 @@ export default function SideBarSection() {
             icon: <ClipboardDocumentCheckIcon className='h-6' />,
             to: '/administrator/products'
         },
-        {
-            name: 'Barcode',
-            path: 'barcode',
-            icon: <QueueListIcon className='h-6 rotate-90' />,
-            to: '/administrator/barcode'
-        },
+        // {
+        //     name: 'Barcode',
+        //     path: 'barcode',
+        //     icon: <QueueListIcon className='h-6 rotate-90' />,
+        //     to: '/administrator/barcode'
+        // },
         {
             name: 'Loyalty Card',
             path: 'loyalty-card',
