@@ -27,6 +27,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('products', ProductController::class);
 Route::apiResource('sales', SalesController::class);
 Route::apiResource('accounts', AccountController::class);
+Route::apiResource('change_account_password', AccountController::class);
+Route::post('/change_account_password/{id}', [AccountController::class, 'change_account_password']);
 Route::apiResource('analytics', AnalyticsController::class);
 Route::apiResource('account_details', AccountDetailsController::class);
 

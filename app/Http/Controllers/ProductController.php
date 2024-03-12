@@ -57,4 +57,13 @@ class ProductController extends Controller
             'data' => $this->index()->original['data']
         ], 200);
     }
+
+    public function destroy($id)
+    {
+        Product::where('id', $id)->delete();
+        return response()->json([
+            'status' => 'success',
+            'data' => $this->index()->original['data']
+        ], 200);
+    }
 }

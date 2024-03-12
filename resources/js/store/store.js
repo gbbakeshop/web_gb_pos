@@ -6,6 +6,7 @@ import cashierSlice from '../app/pages/cashier/redux/cashier-slice';
 import salesSlice from '../app/pages/administrator/sales/redux/sales-slice';
 import accountSlice from '../app/pages/administrator/accounts/redux/account-slice';
 import dashboardSlice from '../app/pages/administrator/dashboard/redux/dashboard-slice';
+import accountDetailsSlice from '../app/pages/administrator/accounts/details/redux/account-details-slice';
 
 const store = configureStore({
     reducer: {
@@ -14,7 +15,8 @@ const store = configureStore({
         cashier:cashierSlice,
         sales:salesSlice,
         accounts:accountSlice,
-        dashboard:dashboardSlice
+        dashboard:dashboardSlice,
+        account_details:accountDetailsSlice
     },
 });
 

@@ -60,7 +60,7 @@ export default function CashierPrintDataComponent() {
                                             return <tr key={index} className="flex">
                                                 <td className="font-semibold text-xs flex-1 py-1">{res.description}</td>
                                                 <td className="font-semibold text-xs min-w-[44px]">{res.quantity}</td>
-                                                <td className="font-semibold text-xs min-w-[44px]">{res.total.toFixed(2)}</td>
+                                                <td className="font-semibold text-xs min-w-[44px]">₱ {res.total.toFixed(2)}</td>
                                             </tr>
 
                                         })
@@ -74,7 +74,7 @@ export default function CashierPrintDataComponent() {
 
                             <p className="flex justify-between">
                                 <span className="text-black font-semibold">Total:</span>
-                                <span className='font-semibold'>{payment.total}</span>
+                                <span className='font-semibold'>₱ {payment.total}</span>
                             </p>
                             <p className="flex justify-between">
                                 <span className="text-black font-semibold">Item Purchased:</span>

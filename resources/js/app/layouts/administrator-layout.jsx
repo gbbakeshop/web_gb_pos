@@ -60,7 +60,7 @@ export default function AdministratorLayout() {
             <Outlet />
           </div>
         </div>
-        <ChatSection />
+        {/* <ChatSection /> */}
       </div>
 
     </>

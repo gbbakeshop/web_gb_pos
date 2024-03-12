@@ -10,7 +10,7 @@ class AccountController extends Controller
 {
     public function index()
     {
-        $accounts = User::where('role','<>','admin')->get();
+        $accounts = User::where('role', '<>', 'admin')->get();
 
         return response()->json([
             'status' => 'status',
@@ -36,6 +36,42 @@ class AccountController extends Controller
             'contact' => $request->contact,
             'status' => $request->status,
         ]);
+        return response()->json([
+            'status' => 'success',
+            'data' => $this->index()->original['data']
+        ], 200);
+    }
+    public function update(Request $request, $id)
+    {
+
+        User::where('id', $id)->update($request->validate([
+            'email' => 'required',
+            'name' => 'required',
+            'role' => 'required',
+            'contact' => 'required',
+            'status' => 'required',
+        ]));
+        return response()->json([
+            'status' => 'success',
+            'data' => $this->index()->original['data']
+        ], 200);
+    }
+
+    public function change_account_password(Request $request, $id)
+    {
+
+        User::where('id', $id)->update([
+            'password' => Hash::make($request->password),
+        ]);
+        return response()->json([
+            'status' => 'success',
+            'data' => $this->index()->original['data']
+        ], 200);
+    }
+
+    public function destroy($id)
+    {
+        User::where('id', $id)->delete();
         return response()->json([
             'status' => 'success',
             'data' => $this->index()->original['data']
