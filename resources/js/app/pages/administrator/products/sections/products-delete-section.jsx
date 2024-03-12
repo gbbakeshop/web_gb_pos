@@ -1,17 +1,21 @@
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationTriangleIcon, TrashIcon } from '@heroicons/react/24/outline'
+import { deleteProductThunk } from '../redux/products-thunk'
+import store from '../../../../../store/store'
 
-export default function AdministratorDeleteAccount({ data }) {
+export default function AdministratorDeleteProduct({ data }) {
     const [open, setOpen] = useState(false)
 
     const cancelButtonRef = useRef(null)
 
-    function deleteAccount(params) {
-        
+    async function deleteProducts(params) {
+        await store.dispatch(deleteProductThunk(data))
+        setOpen(false)
     }
     return (
         <>
+
             <button
                 onClick={() => setOpen(true)}
                 className=" text-red-500 -mt-2">
@@ -50,11 +54,11 @@ export default function AdministratorDeleteAccount({ data }) {
                                             </div>
                                             <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                                                 <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
-                                                    Delete account
+                                                    Delete Product
                                                 </Dialog.Title>
                                                 <div className="mt-2">
                                                     <p className="text-sm text-gray-500">
-                                                        Are you sure you want to delete your account? All of your data will be permanently
+                                                        Are you sure you want to delete your products? All of your data will be permanently
                                                         removed. This action cannot be undone.
                                                     </p>
                                                 </div>
@@ -65,7 +69,7 @@ export default function AdministratorDeleteAccount({ data }) {
                                         <button
                                             type="button"
                                             className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-                                            onClick={() => deleteAccount(false)}
+                                            onClick={() => deleteProducts(false)}
                                         >
                                             Delete It
                                         </button>

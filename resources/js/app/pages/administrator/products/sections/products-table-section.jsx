@@ -5,6 +5,7 @@ import { getAllProductsThunk } from '../redux/products-thunk';
 import { get_products_service } from '../../../../../services/products-service';
 import { useSelector } from 'react-redux';
 import ProductsEditSection from './products-edit-section';
+import AdministratorDeleteProduct from './products-delete-section';
 
 export default function ProductsTableSection() {
 
@@ -127,8 +128,9 @@ export default function ProductsTableSection() {
                           <h2 className="font-medium text-gray-800 dark:text-white ">{res.price}</h2>
                           </td>
 
-                          <td className="px-4 py-4 text-sm whitespace-nowrap">
+                          <td className="px-4 py-4 text-sm whitespace-nowrap flex gap-3">
                            <ProductsEditSection data={res}/>
+                           <AdministratorDeleteProduct data={res}/>
                           </td>
                         </tr>
                       )
