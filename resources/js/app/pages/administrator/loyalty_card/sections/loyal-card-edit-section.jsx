@@ -85,17 +85,10 @@ export default function LoyalCardEditSection({ data }) {
                                     <input
                                         required
                                         value={loyalCardForm.pincode ?? ""}
-                                        onChange={(e) => {
-                                            const length = loyalCardForm.pincode?.length??0
-                                            if (length < 6) {
-                                                const pincode = e.target.value.replace(/[^0-9]/g, '').substring(0, 6); // Limit to 6 digits
-                                                dispatch(setLoyalCardForm({
-                                                    ...loyalCardForm,
-                                                    pincode: pincode,
-                                                    barcode: moment().valueOf()
-                                                }));
-                                            }
-                                        }}
+                                        onChange={(e) => dispatch(setLoyalCardForm({
+                                            ...loyalCardForm,
+                                            pincode: e.target.value
+                                        }))}
                                         className="appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         id="pincode"
                                         type="text"

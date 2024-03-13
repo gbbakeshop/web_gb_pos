@@ -46,8 +46,7 @@ class LoyalCardController extends Controller
     {
         
         LoyalCard::where('id', $id)->update($request->validate([
-            'fullname' => 'required|unique:loyal_cards',
-            'barcode' => 'required',
+            'fullname' => 'required',
             'pincode' => 'required',
             'discount' => 'required',
         ]));
