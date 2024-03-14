@@ -122,7 +122,7 @@ export default function CashierPayModalSection() {
                                     Discount:
                                   </th>
                                   <td className="px-6 py-2 font-bold text-gray-900">
-                                    ₱ {payment.discount}
+                                    {parseFloat(payment.discount) * 100}%
                                   </td>
                                 </tr>
                                 <tr className="bg-white border-b ">

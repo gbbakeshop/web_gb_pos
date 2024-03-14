@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { PencilIcon } from '@heroicons/react/24/outline'
 import { Dialog, Transition } from '@headlessui/react'
-import {  setIsPrint } from '../redux/cashier-slice';
+import {  changesCart, setIsPrint } from '../redux/cashier-slice';
 import FormFieldInput from '../../../components/Input';
 import { useDispatch, useSelector } from 'react-redux';
 export default function CashierEditModal({ data }) {

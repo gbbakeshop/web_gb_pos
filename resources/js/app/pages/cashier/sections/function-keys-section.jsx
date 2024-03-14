@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import CashierLogoutSection from './cashier-logout-section'
+import CashierDiscountModal from './cashier-discount-modal'
 
 export default function FunctionKeysSection() {
 
@@ -20,6 +21,16 @@ export default function FunctionKeysSection() {
           FUCOS
         </div>
       </button>
+      {/* <button
+        className="flex flex-col items-center justify-center bg-red-500">
+        <h1 className="text-white text-5xl leading-tight font-black">E</h1>
+        <div className='text-white'>
+          CHANGE PRICE
+        </div>
+      </button> */}
+      
+      <CashierDiscountModal />
+      
       <button
         className="flex flex-col items-center justify-center bg-red-500">
         <h1 className="text-white text-5xl leading-tight font-black">C</h1>
@@ -34,13 +45,7 @@ export default function FunctionKeysSection() {
           DELETE
         </div>
       </button>
-      <button
-        className="flex flex-col items-center justify-center bg-red-500">
-        <h1 className="text-white text-5xl leading-tight font-black">E</h1>
-        <div className='text-white'>
-          CHANGE PRICE
-        </div>
-      </button>
+      
       <CashierLogoutSection />
     </div>
   )

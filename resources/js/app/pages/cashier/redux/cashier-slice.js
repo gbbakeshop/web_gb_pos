@@ -49,7 +49,7 @@ export const cashierSlice = createSlice({
       const payload = action.payload.value.replace(/[^0-9.]/g, '');
       state.payment = {
         ...state.payment,
-        cashier_id:action.payload.cashier_id,
+        cashier_id: action.payload.cashier_id,
         receipt_id: state.payment.receipt_id ?? Math.floor(1000000000000 + Math.random() * 90000000000000),
         tenders: payload,
         change: (parseFloat(payload) - parseFloat(state.payment.total)).toFixed(2)
@@ -77,6 +77,15 @@ export const cashierSlice = createSlice({
     setSearch: (state, action) => {
       state.search = action.payload
     },
+    setDiscount: (state, action) => {
+      console.log(parseFloat(state.cart.reduce((acc, obj) => acc + obj.total, 0).toFixed(2)) * parseFloat(action.payload))
+      state.payment = {
+        ...state.payment,
+        discount: parseFloat(action.payload),
+        subtotal:parseFloat(state.cart.reduce((acc, obj) => acc + obj.total, 0).toFixed(2)),
+        total: parseFloat(state.cart.reduce((acc, obj) => acc + obj.total, 0).toFixed(2)) - (parseFloat(state.cart.reduce((acc, obj) => acc + obj.total, 0).toFixed(2)) * parseFloat(action.payload))
+      }
+    },
   },
 })
 export const {
@@ -88,7 +97,8 @@ export const {
   resetPayment,
   setIsPrint,
   setSearch,
-  changesCart
+  changesCart,
+  setDiscount
 } = cashierSlice.actions
 
 export default cashierSlice.reducer
