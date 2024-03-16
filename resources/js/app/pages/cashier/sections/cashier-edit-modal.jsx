@@ -34,7 +34,7 @@ export default function CashierEditModal({ data }) {
         <>
             <button
                 onClick={() => setOpen(true)}
-                className="font-medium text-gray-800 dark:text-white ">
+                className="font-medium text-gray-800  text-white ">
                 <PencilIcon className='h-6 text-blue-500' />
             </button>
             <Transition.Root show={open} as={Fragment}>
