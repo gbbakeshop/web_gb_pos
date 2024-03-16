@@ -58,10 +58,13 @@ class SalesController extends Controller
     {
         $sales = Sales::create($request->payment);
         foreach ($request->cart as $value) {
-            // $product = Product::findOrFail($value['id']);
-            // $product->update([
-            //     'quantity' => $product->quantity - $value['quantity']
-            // ]);
+            if (env('APP_ENV') == 'production') {
+                $product = Product::findOrFail($value['id']);
+                $product->update([
+                    'quantity' => $product->quantity - $value['quantity']
+                ]);
+            }
+
             SalesItem::create([
                 'sales_id' => $sales->id,
                 'product_id' => $value['id'],
@@ -74,6 +77,4 @@ class SalesController extends Controller
             'status' => 'success',
         ], 200);
     }
-
-    
 }
