@@ -1,6 +1,10 @@
 {
   "node_modules/canvg/lib/index.es.js": {
+<<<<<<< HEAD
     "file": "assets/index.es-B0B6XImK.js",
+=======
+    "file": "assets/index.es-CvCSu_3l.js",
+>>>>>>> 5aa5cf6b8e1c9cea954c32c866f3e1b5024f23a9
     "src": "node_modules/canvg/lib/index.es.js",
     "isDynamicEntry": true,
     "imports": [
@@ -13,7 +17,11 @@
     "isDynamicEntry": true
   },
   "resources/js/app.js": {
+<<<<<<< HEAD
     "file": "assets/app-BxBN0T8p.js",
+=======
+    "file": "assets/app-ursTasZ2.js",
+>>>>>>> 5aa5cf6b8e1c9cea954c32c866f3e1b5024f23a9
     "src": "resources/js/app.js",
     "isEntry": true,
     "dynamicImports": [

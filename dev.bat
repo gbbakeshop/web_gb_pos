@@ -1,6 +1,6 @@
 @echo off
 
 
-cd /d C:\development\GB Projects\GB_Cashiering
+cd /d C:\wamp64\www\web_gb_pos
 npm run dev
 

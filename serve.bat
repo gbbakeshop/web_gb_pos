@@ -1,4 +1,4 @@
 @echo off
 
-cd /d C:\development\GB Projects\GB_Cashiering
+cd C:\wamp64\www\web_gb_pos
 php artisan serve

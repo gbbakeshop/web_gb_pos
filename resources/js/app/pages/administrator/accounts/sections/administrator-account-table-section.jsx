@@ -20,17 +20,29 @@ export default function AdministratorAccountTableSection() {
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <div>
                         <div className="flex items-center gap-x-3">
+<<<<<<< HEAD
                             <h2 className="text-lg font-medium text-gray-800  text-white">List of Account</h2>
 
                             <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full  bg-gray-800  text-blue-400">{accounts.length} accounts</span>
                         </div>
                         <p className="mt-1 text-sm text-gray-500  text-gray-300">
+=======
+                            <h2 className="text-lg font-medium text-gray-800 ">List of Account</h2>
+
+                            <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full ">{accounts.length} accounts</span>
+                        </div>
+                        <p className="mt-1 text-sm text-gray-500  ">
+>>>>>>> 5aa5cf6b8e1c9cea954c32c866f3e1b5024f23a9
                             {/* Selected bread recipe you wanted to make. */}
                         </p>
                     </div>
 
                     <div className="flex items-center mt-4 gap-x-3">
+<<<<<<< HEAD
                         <button className="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto  hover:bg-gray-800  bg-gray-900 hover:bg-gray-100  text-gray-200  border-gray-700">
+=======
+                        <button className="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto border-gray-700">
+>>>>>>> 5aa5cf6b8e1c9cea954c32c866f3e1b5024f23a9
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clipPath="url(#clip0_3098_154395)">
                                     <path d="M13.3333 13.3332L9.99997 9.9999M9.99997 9.9999L6.66663 13.3332M9.99997 9.9999V17.4999M16.9916 15.3249C17.8044 14.8818 18.4465 14.1806 18.8165 13.3321C19.1866 12.4835 19.2635 11.5359 19.0351 10.6388C18.8068 9.7417 18.2862 8.94616 17.5555 8.37778C16.8248 7.80939 15.9257 7.50052 15 7.4999H13.95C13.6977 6.52427 13.2276 5.61852 12.5749 4.85073C11.9222 4.08295 11.104 3.47311 10.1817 3.06708C9.25943 2.66104 8.25709 2.46937 7.25006 2.50647C6.24304 2.54358 5.25752 2.80849 4.36761 3.28129C3.47771 3.7541 2.70656 4.42249 2.11215 5.23622C1.51774 6.04996 1.11554 6.98785 0.935783 7.9794C0.756025 8.97095 0.803388 9.99035 1.07431 10.961C1.34523 11.9316 1.83267 12.8281 2.49997 13.5832" stroke="currentColor" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round" />
@@ -78,11 +90,19 @@ export default function AdministratorAccountTableSection() {
                 <div className="flex flex-col mt-6">
                     <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+<<<<<<< HEAD
                             <div className="overflow-hidden border border-gray-200  border-gray-700 md:rounded-lg">
                                 <table className="min-w-full divide-y divide-gray-200  divide-gray-700">
                                     <thead className="bg-gray-50  bg-gray-800">
                                         <tr>
                                             <th scope="col" className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500  text-gray-400">
+=======
+                            <div className="overflow-hidden border border-gray-200   md:rounded-lg">
+                                <table className="min-w-full divide-y divide-gray-200 ">
+                                    <thead className="bg-gray-50 ">
+                                        <tr>
+                                            <th scope="col" className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500">
+>>>>>>> 5aa5cf6b8e1c9cea954c32c866f3e1b5024f23a9
                                                 <button className="flex items-center gap-x-3 focus:outline-none">
                                                     <span>Fullname</span>
 
@@ -94,6 +114,7 @@ export default function AdministratorAccountTableSection() {
                                                 </button>
                                             </th>
 
+<<<<<<< HEAD
                                             <th scope="col" className="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500  text-gray-400">
                                                 Email
                                             </th>
@@ -109,6 +130,23 @@ export default function AdministratorAccountTableSection() {
                                                 Status
                                             </th>
                                             <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500  text-gray-400">
+=======
+                                            <th scope="col" className="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                                Email
+                                            </th>
+
+                                            <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                                Role
+                                            </th>
+
+                                            <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                                Contact #
+                                            </th>
+                                            <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                                Status
+                                            </th>
+                                            <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+>>>>>>> 5aa5cf6b8e1c9cea954c32c866f3e1b5024f23a9
                                                 Action
                                             </th>
                                         </tr>
@@ -119,6 +157,7 @@ export default function AdministratorAccountTableSection() {
                                                 return <tr key={i}>
                                                     <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
                                                         <div className='underline'>
+<<<<<<< HEAD
                                                             <Link to={"/administrator/accounts/" + res.id} className="font-medium text-gray-800  text-white ">{res.name}</Link>
                                                         </div>
                                                     </td>
@@ -133,6 +172,22 @@ export default function AdministratorAccountTableSection() {
                                                     </td>
                                                     <td className="px-4 py-4 text-sm whitespace-nowrap">
                                                         <h2 className="font-medium text-gray-800  text-white ">{res.status}</h2>
+=======
+                                                            <Link to={"/administrator/accounts/" + res.id} className="font-medium text-gray-800">{res.name}</Link>
+                                                        </div>
+                                                    </td>
+                                                    <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
+                                                        <h2 className="font-medium text-gray-800">{res.email}</h2>
+                                                    </td>
+                                                    <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
+                                                        <h2 className="font-medium text-gray-800">{res.role}</h2>
+                                                    </td>
+                                                    <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                                        <h2 className="font-medium text-gray-800">{res.contact}</h2>
+                                                    </td>
+                                                    <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                                        <h2 className="font-medium text-gray-800">{res.status}</h2>
+>>>>>>> 5aa5cf6b8e1c9cea954c32c866f3e1b5024f23a9
                                                     </td>
 
 
@@ -154,7 +209,11 @@ export default function AdministratorAccountTableSection() {
                             </div>
 
                             {/* <div className="mt-6 sm:flex sm:items-center sm:justify-between ">
+<<<<<<< HEAD
                                 <div className="text-sm text-gray-500  text-gray-400">
+=======
+                                <div className="text-sm text-gray-500">
+>>>>>>> 5aa5cf6b8e1c9cea954c32c866f3e1b5024f23a9
                                     Page <span className="font-medium text-gray-700  text-gray-100">1 of 10</span>
                                 </div>
 
