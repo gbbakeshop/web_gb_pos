@@ -27,7 +27,7 @@ export default function AdministratorShowSalesItemSection({ data, id }) {
                             </div>
                         </div>
                         <div className='flex-1'>
-                            <ul className="max-w-md space-y-1 text-gray-500 list-disc list-inside  text-gray-400">
+                            <ul className="max-w-md space-y-1 text-gray-500 list-disc list-inside  ">
                                 <li>
                                     Subtotal: {data.subtotal}
                                 </li>
