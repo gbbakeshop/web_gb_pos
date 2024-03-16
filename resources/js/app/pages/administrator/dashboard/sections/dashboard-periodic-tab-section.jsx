@@ -20,13 +20,13 @@ export default function DashboardPeriodicTabSection() {
       <div className="sm:flex sm:items-center sm:justify-between">
         <div>
           <div className="flex items-center gap-x-3">
-            <h2 className="text-lg font-medium text-gray-800 dark:text-white">Dashboard Monitoring</h2>
+            <h2 className="text-lg font-medium text-gray-800">Dashboard Monitoring</h2>
           </div>
         </div>
       </div>
 
       <div className="mt-6 md:flex md:items-center md:justify-between">
-        <div className='inline-flex overflow-hidden bg-white border divide-x rounded-lg dark:bg-gray-900 rtl:flex-row-reverse dark:border-gray-700 dark:divide-gray-700'>
+        <div className='inline-flex overflow-hidden bg-white border divide-x rounded-lg  rtl:flex-row-reverse'>
           <button
             onClick={() => dispatch(setTab('daily'))}
             className={isActive('daily')}>
